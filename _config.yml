@@ -4,7 +4,9 @@
 
 # Site
 title: 朝花夕誓
-subtitle:
+# 副标题：不展示
+subtitle: 一笑悬命
+# 描述：不展示
 description: 命运也好，使命也好，过去也好，都没有关系，仅仅是为了能微笑着死去，努力地活着而已。
 keywords:
 author: Sakura
