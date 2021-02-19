@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>朝花夕誓</title>
   
-  
+  <subtitle>一笑悬命</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://0bipinnata0.github.io/"/>
-  <updated>2021-02-19T08:35:32.318Z</updated>
+  <updated>2021-02-19T14:15:52.839Z</updated>
   <id>https://0bipinnata0.github.io/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>建站流程记录</title>
+    <link href="https://0bipinnata0.github.io/2021/02/19/%E5%BB%BA%E7%AB%99%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/"/>
+    <id>https://0bipinnata0.github.io/2021/02/19/建站流程记录/</id>
+    <published>2021-02-19T13:40:57.000Z</published>
+    <updated>2021-02-19T14:15:52.839Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;2021-02-19&quot;&gt;&lt;a href=&quot;#2021-02-19&quot; class=&quot;headerlink&quot; title=&quot;2021-02-19&quot;&gt;&lt;/a&gt;2021-02-19&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;shell&quot;&gt;git clone
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://0bipinnata0.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Hexo-Theme-Sakura</title>
     <link href="https://0bipinnata0.github.io/2018/12/12/Hexo-Theme-Sakura/"/>
     <id>https://0bipinnata0.github.io/2018/12/12/Hexo-Theme-Sakura/</id>
     <published>2018-12-12T14:16:01.000Z</published>
-    <updated>2021-02-19T08:35:32.318Z</updated>
+    <updated>2021-02-19T13:57:56.352Z</updated>
     
     <summary type="html">
     
