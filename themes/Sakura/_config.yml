@@ -6,7 +6,7 @@ favicon: /images/favicon.ico
 avatar: /img/custom/avatar.jpg
 url: 0bipinnata0.github.io
 description: 分散逐风转，此已非常身。
-cdn: https://cdn.jsdelivr.net/gh/honjun/cdn@1.6
+cdn: https://cdn.jsdelivr.net/gh/0bipinnata0/hexo-cdn@0.0.1
 pjax: 1
 # 1开启
 mathjax: 0
