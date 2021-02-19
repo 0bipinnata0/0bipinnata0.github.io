@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="/"/>
+  <link href="http://example.com/"/>
   <updated>2021-02-19T08:35:32.318Z</updated>
-  <id>/</id>
+  <id>http://example.com/</id>
   
   <author>
     <name>Sakura</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hexo-Theme-Sakura</title>
-    <link href="/2018/12/12/Hexo-Theme-Sakura/"/>
-    <id>/2018/12/12/Hexo-Theme-Sakura/</id>
+    <link href="http://example.com/2018/12/12/Hexo-Theme-Sakura/"/>
+    <id>http://example.com/2018/12/12/Hexo-Theme-Sakura/</id>
     <published>2018-12-12T14:16:01.000Z</published>
     <updated>2021-02-19T08:35:32.318Z</updated>
     
@@ -29,12 +29,12 @@
     
     </summary>
     
-      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="web" scheme="/tags/web/"/>
+      <category term="web" scheme="http://example.com/tags/web/"/>
     
-      <category term="悦读" scheme="/tags/%E6%82%A6%E8%AF%BB/"/>
+      <category term="悦读" scheme="http://example.com/tags/%E6%82%A6%E8%AF%BB/"/>
     
   </entry>
   
