@@ -92,7 +92,7 @@ deploy:
 # backup
 backup:
   type: git
-  message: backup my blog of https://yourname.github.io/
+  message: backup my blog of https://0bipinnata0.github.io/
   repository:
     github: https://github.com/0bipinnata0/0bipinnata0.github.io.git,backup
     # github: https://github.com/honjun/honjun.github.io.git,backup
