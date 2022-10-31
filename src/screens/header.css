@@ -1,0 +1,118 @@
+.m-top {
+  display: flex;
+  height: 70px;
+  background-color: rgb(36, 36, 36);
+  justify-content: center;
+}
+
+.m-top .logo {
+  height: 100%;
+  width: 176px;
+  background: url("../../public/topbar.png") no-repeat;
+}
+
+.m-top .nav {
+  height: 100%;
+  width: 508px;
+  margin-right: 84px;
+}
+
+.m-top .nav ul {
+  height: 100%;
+  text-decoration: none;
+  display: flex;
+  list-style: none;
+  font-size: 12px;
+  /* justify-content: space-around; */
+}
+
+.m-top .nav ul li:first-child {
+  background-color: #000;
+}
+
+.m-top .nav ul li {
+  /* flex: 1; */
+  padding: 0 19px 1px 19px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: rgb(255, 255, 255);
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.m-top .nav ul li:hover {
+  background: #000;
+  text-decoration: none;
+  color: #fff;
+}
+.m-top .nav ul li em {
+  font-style: normal;
+  color: rgb(204, 204, 204);
+}
+
+.m-top .search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.m-top .search .srchbg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-style: normal;
+  width: 158px;
+  height: 32px;
+  border-radius: 32px;
+  background: url("../../public/topbar.png") no-repeat 0 -99px;
+  background-color: rgb(255, 255, 255);
+}
+.m-top .search .srchbg input {
+  margin: 0 12px 0 30px;
+  font-size: 12px;
+  opacity: 1;
+  background: transparent;
+  border: 0;
+  color: #9b9b9b;
+}
+
+.m-top .search .srchbg input:focus {
+  color: rgb(36, 36, 36);
+  outline: none;
+}
+
+.m-creator-center {
+  display: flex;
+  align-items: center;
+  margin-left: 12px;
+}
+
+.m-creator-center a {
+  color: rgb(204, 204, 204);
+  border-radius: 20px;
+  height: 32px;
+  border: 1px solid #4f4f4f;
+  padding-left: 16px;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 33px;
+  width: 72px;
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.user img {
+  border-radius: 30px;
+  margin: 0 22px 0 20px;
+}
+
+.nav-2 {
+  height: 35px;
+  background-color: rgb(194, 12, 12);
+}
