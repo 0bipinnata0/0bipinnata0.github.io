@@ -1,3 +1,4 @@
+import SubNav from "../SubNav";
 import "./header.css";
 
 const Header: React.FC<{}> = () => {
@@ -39,7 +40,7 @@ const Header: React.FC<{}> = () => {
           <img src={process.env.PUBLIC_URL + "/avatar.jpg"} alt="avatar" />
         </div>
       </header>
-      <header className="nav-2"></header>
+      <SubNav />
     </div>
   );
 };

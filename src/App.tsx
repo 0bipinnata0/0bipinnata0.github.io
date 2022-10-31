@@ -1,5 +1,5 @@
 import "./App.css";
-import Header from "./screens/header";
+import Header from "./screens/Header";
 
 const App: React.FC<{}> = () => {
   return (

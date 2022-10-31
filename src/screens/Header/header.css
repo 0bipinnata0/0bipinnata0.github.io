@@ -8,7 +8,7 @@
 .m-top .logo {
   height: 100%;
   width: 176px;
-  background: url("../../public/topbar.png") no-repeat;
+  background: url("../../../public/topbar.png") no-repeat;
 }
 
 .m-top .nav {
@@ -82,7 +82,7 @@
   width: 158px;
   height: 32px;
   border-radius: 32px;
-  background: url("../../public/topbar.png") no-repeat 0 -99px;
+  background: url("../../../public/topbar.png") no-repeat 0 -99px;
   background-color: rgb(255, 255, 255);
 }
 .m-top .search .srchbg input {
