@@ -19,9 +19,7 @@
 
 .m-top .nav ul {
   height: 100%;
-  text-decoration: none;
   display: flex;
-  list-style: none;
   font-size: 12px;
   /* justify-content: space-around; */
 }
