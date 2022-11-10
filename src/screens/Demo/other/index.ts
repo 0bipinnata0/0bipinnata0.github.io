@@ -10,14 +10,20 @@ export class Tetris {
   #height = 20;
   #x = 3;
   #y = 0;
+  #init = true;
   #block = getBlock();
   #data = getMap(this.#height, this.#width);
   #prevData = this.#data;
   #gc: CanvasRenderingContext2D;
   #reset() {
+    if (this.#init) {
+      return false;
+    }
     this.#x = 3;
     this.#y = 0;
     this.#block = getBlock();
+    this.#init = true;
+    return true;
   }
   left() {
     if (this.#x === 0) {
@@ -128,16 +134,15 @@ export class Tetris {
         this.#data = [new Array(this.#width).fill(0), ...filteredData];
       }
       console.info("END");
-      this.#reset();
-      this.draw(false);
+      const hasReset = this.#reset();
+      if (hasReset) {
+        this.draw(false);
+      }
+      this.#init = false;
       return;
     }
     this.#prevData = data;
     this.#render(data);
+    this.#init = false;
   }
 }
-
-// @ts-ignore
-const canvas: HTMLCanvasElement = document.getElementById("myCanvas");
-// @ts-ignore
-// setTimeout(() => tetris.draw(), 500);
