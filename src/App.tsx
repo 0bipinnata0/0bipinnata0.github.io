@@ -1,4 +1,5 @@
 import "./App.css";
+import Rectangle from "./screens/Demo/Rectangle";
 import Header from "./screens/Header";
 
 const App: React.FC<{}> = () => {
@@ -6,8 +7,9 @@ const App: React.FC<{}> = () => {
     <div className="application">
       <Header />
       <div>
-        {new Array(100).fill(1).map((i) => (
-          <div>{i}</div>
+        <Rectangle />
+        {new Array(100).fill(1).map((i, index) => (
+          <div key={index}>{i}</div>
         ))}
       </div>
     </div>
