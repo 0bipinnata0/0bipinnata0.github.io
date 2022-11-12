@@ -1,7 +1,7 @@
-const useIcon = (type: number) => {
+const useIcon = (type: number): React.ReactNode => {
   switch (type) {
     case -1:
-      return <>🚩</>;
+      return <>💣</>;
     case 1:
       return <div>1</div>;
     case 2:

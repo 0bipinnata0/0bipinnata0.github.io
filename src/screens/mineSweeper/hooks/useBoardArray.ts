@@ -5,6 +5,7 @@ export interface BoardItemType {
   value: number;
   show: boolean;
   key: number;
+  flag: boolean;
 }
 
 const useBoardArray = (row: number, col: number): BoardItemType[] => {
@@ -20,13 +21,16 @@ const useBoardArray = (row: number, col: number): BoardItemType[] => {
           return v;
         }
         const surroundAIndex = getSurroundArr(index, col, row);
-        const surrounding = surroundAIndex.map((v) => arr[v]).filter((v) => v < 0);
+        const surrounding = surroundAIndex
+          .map((v) => arr[v])
+          .filter((v) => v < 0);
         return surrounding.length;
       });
     return mapArray.map((v, index) => ({
       value: v,
       show: false,
       key: index,
+      flag: false,
     }));
   }, [row, col]);
 

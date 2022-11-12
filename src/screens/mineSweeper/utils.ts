@@ -98,7 +98,7 @@ function expandBoard(
   col: number,
   row: number
 ) {
-  const notEmptySet = new Set<number>();
+  const showSet = new Set<number>([item.key]);
   const doneEmptySet = new Set([item]);
   const doingQueue = [item];
   let head = doingQueue.shift();
@@ -108,7 +108,7 @@ function expandBoard(
     surroundIndex.forEach((index) => {
       const item = board[index];
       if (item.value !== 0) {
-        notEmptySet.add(item.key);
+        showSet.add(item.key);
         return;
       }
       if (doingQueue.includes(item)) {
@@ -117,6 +117,7 @@ function expandBoard(
       if (doneEmptySet.has(item)) {
         return;
       }
+      showSet.add(item.key);
       doingQueue.push(item);
       doneEmptySet.add(item);
     });
@@ -124,5 +125,5 @@ function expandBoard(
     head = doingQueue.shift();
   }
 
-  return [...notEmptySet];
+  return [...showSet];
 }

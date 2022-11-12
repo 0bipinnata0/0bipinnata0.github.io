@@ -8,6 +8,7 @@ const BoardContext = React.createContext<{
   col: number;
   boardArray: BoardItemType[];
   onClickBoardItem: (item: BoardItemType) => void;
+  toggleFlag: (item: BoardItemType) => void;
 } | null>(null);
 
 export const Board: React.FC<
@@ -31,8 +32,18 @@ export const Board: React.FC<
     updateBoardArray(newArray);
   };
 
+  const toggleFlag = (selected: BoardItemType) => {
+    updateBoardArray(
+      boardArray.map((item) =>
+        item === selected ? { ...item, flag: !item.flag } : item
+      )
+    );
+  };
+
   return (
-    <BoardContext.Provider value={{ row, col, boardArray, onClickBoardItem }}>
+    <BoardContext.Provider
+      value={{ row, col, boardArray, onClickBoardItem, toggleFlag }}
+    >
       <Container row={row} col={col}>
         {children}
       </Container>
