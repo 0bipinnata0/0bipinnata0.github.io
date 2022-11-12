@@ -1,5 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
+import useBoard from "./hooks/useBoard";
+import { BoardItemType } from "./hooks/useBoardArray";
 import useIcon from "./hooks/useIcon";
 
 const Cell = styled.div`
@@ -13,10 +15,13 @@ const Cell = styled.div`
   cursor: pointer;
 `;
 
-const Square: React.FC<{ children: number }> = ({ children }) => {
-  const [show, setState] = useState(false);
-  const view = useIcon(children);
-  return <Cell onClick={() => setState(true)}>{show ? view : null}</Cell>;
+const Square: React.FC<{ children: BoardItemType }> = ({ children: item }) => {
+  const { onClickBoardItem } = useBoard();
+  const { show, value } = item;
+  const view = useIcon(value);
+  return (
+    <Cell onClick={() => onClickBoardItem(item)}>{show ? view : null}</Cell>
+  );
 };
 
 export default Square;
