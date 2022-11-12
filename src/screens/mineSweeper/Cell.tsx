@@ -16,8 +16,7 @@ const BaseCell = styled.div`
 const ShowCell = styled(BaseCell)`
   width: 38px;
   height: 38px;
-  /* background-color: rgb(192, 192, 192); */
-  background-color: yellow;
+  background-color: #dde7c7;
   border: 1px solid rgb(138, 138, 138);
 `;
 
