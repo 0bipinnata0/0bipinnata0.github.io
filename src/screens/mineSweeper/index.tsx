@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import PalyArea from "./PalyArea";
 
 const Container = styled.div<{ col: number; row: number }>`
   margin: auto;
@@ -8,29 +9,6 @@ const Container = styled.div<{ col: number; row: number }>`
   background-color: rgb(192, 192, 192);
   flex-wrap: wrap;
 `;
-
-const Square = styled.div`
-  display: flex;
-  margin: 2px;
-  width: 36px;
-  height: 36px;
-  background-color: aliceblue;
-`;
-
-const PalyArea: React.FC<{
-  col: number;
-  row: number;
-}> = ({ col, row }) => {
-  //   const width = data[0].length;
-  const data = new Array(row * col).fill(0);
-  return (
-    <>
-      {data.map((item, index) => (
-        <Square key={index}>{item}</Square>
-      ))}
-    </>
-  );
-};
 
 const MineSweeper = () => {
   const row = 16;
