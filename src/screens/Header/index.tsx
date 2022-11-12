@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import SubNav from "../SubNav";
 import "./header.css";
 
@@ -12,7 +13,9 @@ const Header: React.FC<{}> = () => {
               <em>发现音乐</em>
             </li>
             <li>
-              <em>我的音乐</em>
+              <Link to="minesweeper">
+                <em>我的音乐</em>
+              </Link>
             </li>
             <li>
               <em>关注</em>
