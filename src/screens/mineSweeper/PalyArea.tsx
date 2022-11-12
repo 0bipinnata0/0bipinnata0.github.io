@@ -1,31 +1,5 @@
-import styled from "styled-components";
+import Square from "./Square";
 import { selectTargetIndex } from "./utils";
-
-const Cell = styled.div`
-  display: flex;
-  margin: 2px;
-  width: 36px;
-  height: 36px;
-  background-color: aliceblue;
-  justify-content: center;
-  align-items: center;
-`;
-
-const useIcon = (type: number) => {
-  switch (type) {
-    case -1:
-      return <>"🚩"</>;
-    case 1:
-      return <div>1</div>;
-    default:
-      return null;
-  }
-};
-
-const Square: React.FC<{ children: number }> = ({ children }) => {
-  const view = useIcon(children);
-  return <Cell>{view}</Cell>;
-};
 
 const PalyArea: React.FC<{
   col: number;
@@ -33,9 +7,37 @@ const PalyArea: React.FC<{
 }> = ({ col, row }) => {
   //   const width = data[0].length;
   const length = row * col;
-  const mine = selectTargetIndex(length, 70);
-  console.info(mine);
-  const data = new Array<number>(length).fill(0);
+  const mines = selectTargetIndex(length, 70);
+  const data = new Array<number>(length)
+    .fill(0)
+    .map((v, index) => (mines.includes(index) ? -1 : v))
+    .map((v, index, arr) => {
+      if (v < 0) {
+        return v;
+      }
+      const leftTop = arr[index - col - 1];
+      const top = arr[index - col];
+      const rightTop = arr[index - col + 1];
+      const left = arr[index - 1];
+      const right = arr[index + 1];
+      const leftBottom = arr[index + col - 1];
+      const bottom = arr[index + col];
+      const rightBottom = arr[index + col + 1];
+      const surrounding = [
+        leftTop,
+        top,
+        rightTop,
+        left,
+        right,
+        leftBottom,
+        bottom,
+        rightBottom,
+      ]
+        .filter((v) => v)
+        .filter((v) => v < 0);
+
+      return surrounding.length;
+    });
   return (
     <>
       {data.map((item, index) => (
