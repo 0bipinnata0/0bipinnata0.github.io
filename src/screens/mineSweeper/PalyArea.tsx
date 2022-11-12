@@ -2,7 +2,6 @@ import useBoard from "./hooks/useBoard";
 import Square from "./Square";
 
 const PalyArea = () => {
-  //   const width = data[0].length;
   const { boardArray } = useBoard();
   return (
     <>

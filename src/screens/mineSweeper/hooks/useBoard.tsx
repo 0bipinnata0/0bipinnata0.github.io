@@ -32,8 +32,8 @@ export const Board: React.FC<
   const [row, setRow] = useState(defaultRow);
   const [col, setCol] = useState(defaultCol);
   const [bombs, setBombs] = useState(defaultBombs);
-  const boardArrayRaw = useBoardArray(row, col, bombs);
-  const [boardArray, updateBoardArray] = useState(boardArrayRaw);
+  const [boardArray, updateBoardArray] = useBoardArray(row, col, bombs);
+
   const onClickBoardItem = (selected: BoardItemType) => {
     if (selected.show) {
       return;

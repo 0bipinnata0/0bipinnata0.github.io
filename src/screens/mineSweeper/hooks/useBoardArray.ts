@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getSurroundArr, selectTargetIndex } from "../utils";
 
 export interface BoardItemType {
@@ -8,11 +8,7 @@ export interface BoardItemType {
   flag: boolean;
 }
 
-const useBoardArray = (
-  row: number,
-  col: number,
-  bombs: number
-): BoardItemType[] => {
+const useBoardArray = (row: number, col: number, bombs: number) => {
   const data = useMemo(() => {
     console.info("re render");
     const length = row * col;
@@ -36,9 +32,12 @@ const useBoardArray = (
       key: index,
       flag: false,
     }));
-  }, [row, col]);
-
-  return data;
+  }, [row, col, bombs]);
+  const [boardArray, update] = useState(data);
+  useEffect(() => {
+    update(data);
+  }, [data]);
+  return [boardArray, update] as const;
 };
 
 export default useBoardArray;
