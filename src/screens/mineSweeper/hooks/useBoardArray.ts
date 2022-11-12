@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { selectTargetIndex } from "../utils";
+import { getSurroundArr, selectTargetIndex } from "../utils";
 
 export interface BoardItemType {
   value: number;
@@ -19,27 +19,8 @@ const useBoardArray = (row: number, col: number): BoardItemType[] => {
         if (v < 0) {
           return v;
         }
-        const leftTop = arr[index - col - 1];
-        const top = arr[index - col];
-        const rightTop = arr[index - col + 1];
-        const left = arr[index - 1];
-        const right = arr[index + 1];
-        const leftBottom = arr[index + col - 1];
-        const bottom = arr[index + col];
-        const rightBottom = arr[index + col + 1];
-        const surrounding = [
-          leftTop,
-          top,
-          rightTop,
-          left,
-          right,
-          leftBottom,
-          bottom,
-          rightBottom,
-        ]
-          .filter((v) => v)
-          .filter((v) => v < 0);
-
+        const surroundAIndex = getSurroundArr(index, col, row);
+        const surrounding = surroundAIndex.map((v) => arr[v]).filter((v) => v < 0);
         return surrounding.length;
       });
     return mapArray.map((v, index) => ({

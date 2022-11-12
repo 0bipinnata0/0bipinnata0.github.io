@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import Container from "../Container";
+import { handleDifferentBoardItem } from "../utils";
 import useBoardArray, { BoardItemType } from "./useBoardArray";
 
 const BoardContext = React.createContext<{
@@ -17,11 +18,15 @@ export const Board: React.FC<
 > = ({ row, col, children }) => {
   const boardArrayRaw = useBoardArray(row, col);
   const [boardArray, updateBoardArray] = useState(boardArrayRaw);
-
   const onClickBoardItem = (selected: BoardItemType) => {
-    const {key} = selected;
+    const turnShowArray = handleDifferentBoardItem(
+      selected,
+      boardArray,
+      col,
+      row
+    );
     const newArray = boardArray.map((item) => {
-      return item.key !== key ? item : { ...item, show: true };
+      return turnShowArray.includes(item.key) ? { ...item, show: true } : item;
     });
     updateBoardArray(newArray);
   };
