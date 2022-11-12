@@ -10,11 +10,13 @@ const Header: React.FC<{}> = () => {
         <div className="nav">
           <ul>
             <li>
-              <em>发现音乐</em>
+              <Link to="/">
+                <em>发现方块</em>
+              </Link>
             </li>
             <li>
-              <Link to="minesweeper">
-                <em>我的音乐</em>
+              <Link to="/minesweeper">
+                <em>我的扫雷</em>
               </Link>
             </li>
             <li>
