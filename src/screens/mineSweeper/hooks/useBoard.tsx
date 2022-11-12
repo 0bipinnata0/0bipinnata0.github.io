@@ -20,6 +20,9 @@ export const Board: React.FC<
   const boardArrayRaw = useBoardArray(row, col);
   const [boardArray, updateBoardArray] = useState(boardArrayRaw);
   const onClickBoardItem = (selected: BoardItemType) => {
+    if (selected.show) {
+      return;
+    }
     const turnShowArray = handleDifferentBoardItem(
       selected,
       boardArray,
