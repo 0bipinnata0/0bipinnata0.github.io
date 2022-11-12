@@ -8,11 +8,15 @@ export interface BoardItemType {
   flag: boolean;
 }
 
-const useBoardArray = (row: number, col: number): BoardItemType[] => {
+const useBoardArray = (
+  row: number,
+  col: number,
+  bombs: number
+): BoardItemType[] => {
   const data = useMemo(() => {
     console.info("re render");
     const length = row * col;
-    const mines = selectTargetIndex(length, 70);
+    const mines = selectTargetIndex(length, bombs);
     const mapArray = new Array<number>(length)
       .fill(0)
       .map((v, index) => (mines.includes(index) ? -1 : v))

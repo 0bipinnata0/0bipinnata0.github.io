@@ -6,18 +6,33 @@ import useBoardArray, { BoardItemType } from "./useBoardArray";
 const BoardContext = React.createContext<{
   row: number;
   col: number;
+  bombs: number;
   boardArray: BoardItemType[];
   onClickBoardItem: (item: BoardItemType) => void;
   toggleFlag: (item: BoardItemType) => void;
+  setRow: React.Dispatch<React.SetStateAction<number>>;
+  setCol: React.Dispatch<React.SetStateAction<number>>;
+  setBombs: React.Dispatch<React.SetStateAction<number>>;
 } | null>(null);
 
 export const Board: React.FC<
   React.PropsWithChildren<{
+    header: React.ReactNode;
     row: number;
     col: number;
+    bombs: number;
   }>
-> = ({ row, col, children }) => {
-  const boardArrayRaw = useBoardArray(row, col);
+> = ({
+  row: defaultRow,
+  col: defaultCol,
+  children,
+  header,
+  bombs: defaultBombs,
+}) => {
+  const [row, setRow] = useState(defaultRow);
+  const [col, setCol] = useState(defaultCol);
+  const [bombs, setBombs] = useState(defaultBombs);
+  const boardArrayRaw = useBoardArray(row, col, bombs);
   const [boardArray, updateBoardArray] = useState(boardArrayRaw);
   const onClickBoardItem = (selected: BoardItemType) => {
     if (selected.show) {
@@ -30,12 +45,17 @@ export const Board: React.FC<
       row
     );
     const newArray = boardArray.map((item) => {
-      return turnShowArray.includes(item.key) ? { ...item, show: true } : item;
+      return turnShowArray.includes(item.key)
+        ? { ...item, show: true, flag: false }
+        : item;
     });
     updateBoardArray(newArray);
   };
 
   const toggleFlag = (selected: BoardItemType) => {
+    if (selected.show) {
+      return;
+    }
     updateBoardArray(
       boardArray.map((item) =>
         item === selected ? { ...item, flag: !item.flag } : item
@@ -45,8 +65,19 @@ export const Board: React.FC<
 
   return (
     <BoardContext.Provider
-      value={{ row, col, boardArray, onClickBoardItem, toggleFlag }}
+      value={{
+        row,
+        col,
+        boardArray,
+        onClickBoardItem,
+        toggleFlag,
+        setRow,
+        setCol,
+        bombs,
+        setBombs,
+      }}
     >
+      {header}
       <Container row={row} col={col}>
         {children}
       </Container>

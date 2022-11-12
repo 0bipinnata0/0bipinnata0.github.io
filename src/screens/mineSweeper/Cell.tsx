@@ -38,7 +38,16 @@ const Cell: React.FC<{ item: BoardItemType }> = ({ item }) => {
       </BaseCell>
     );
   }
-  return <ShowCell>{view}</ShowCell>;
+  return (
+    <ShowCell
+      onContextMenu={(evt: any) => {
+        evt.preventDefault();
+        toggleFlag(item);
+      }}
+    >
+      {view}
+    </ShowCell>
+  );
 };
 
 export default Cell;

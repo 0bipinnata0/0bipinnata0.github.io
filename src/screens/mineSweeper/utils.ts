@@ -97,7 +97,7 @@ function expandBoard(
   board: BoardItemType[],
   col: number,
   row: number
-) {
+): number[] {
   const showSet = new Set<number>([item.key]);
   const doneEmptySet = new Set([item]);
   const doingQueue = [item];
