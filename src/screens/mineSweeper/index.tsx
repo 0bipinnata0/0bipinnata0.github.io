@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import useBoard, { Board } from "./hooks/useBoard";
 import PalyArea from "./PalyArea";
@@ -8,8 +9,11 @@ const Flex = styled.div`
   justify-content: space-around;
   align-items: center;
   width: 90vw;
+  margin: 2px;
 `;
-const Header = () => {
+const Header: React.FC<{
+  reset: () => void;
+}> = ({ reset }) => {
   const { boardArray, row, col, bombs, setRow, setCol, setBombs } = useBoard();
   const leftBombs = boardArray
     .filter((item) => !item.flag)
@@ -50,6 +54,9 @@ const Header = () => {
         </div>
       </Flex>
       <Flex>
+        <button onClick={reset}>重置</button>
+      </Flex>
+      <Flex>
         <div>剩余:{leftBombs}</div>
       </Flex>
     </Flex>
@@ -60,9 +67,19 @@ const MineSweeper = () => {
   const row = 16;
   const col = 30;
   const bombs = 70;
+  const [randomValue, setRandomValue] = useState(Date.now());
+  const resetHandle = () => {
+    setRandomValue(Date.now() + Math.random());
+  };
   return (
     <>
-      <Board row={row} col={col} bombs={bombs} header={<Header />}>
+      <Board
+        row={row}
+        col={col}
+        bombs={bombs}
+        header={<Header reset={resetHandle} />}
+        key={randomValue}
+      >
         <PalyArea />
       </Board>
     </>

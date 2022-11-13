@@ -38,6 +38,14 @@ export const Board: React.FC<
     if (selected.show) {
       return;
     }
+    // 踩中炸弹
+    if (selected.value === -1) {
+      const endArray = boardArray.map((item) =>
+        item.value === -1 ? { ...item, show: true } : item
+      );
+      updateBoardArray(endArray);
+      return;
+    }
     const turnShowArray = handleDifferentBoardItem(
       selected,
       boardArray,
