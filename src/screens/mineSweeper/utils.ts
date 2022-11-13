@@ -31,7 +31,7 @@ export function handleDifferentBoardItem(
   if (value !== 0) {
     return [key];
   }
-  return expandBoard(item, board, col, row);
+  return expandBoard([item], board, col, row);
 }
 
 export function getSurroundArr(
@@ -92,15 +92,15 @@ export function getSurroundArr(
   return surroundArr;
 }
 
-function expandBoard(
-  item: BoardItemType,
+export function expandBoard(
+  items: BoardItemType[],
   board: BoardItemType[],
   col: number,
   row: number
 ): number[] {
-  const showSet = new Set<number>([item.key]);
-  const doneEmptySet = new Set([item]);
-  const doingQueue = [item];
+  const showSet = new Set<number>(items.map((item) => item.key));
+  const doneEmptySet = new Set(items);
+  const doingQueue = items;
   let head = doingQueue.shift();
   while (head) {
     const { key } = head;

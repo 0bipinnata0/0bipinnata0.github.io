@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import useBoard from "./hooks/useBoard";
 import { BoardItemType } from "./hooks/useBoardArray";
 import useIcon from "./hooks/useIcon";
@@ -31,7 +31,7 @@ const ShowCell = styled(BaseCell)`
 `;
 
 const Cell: React.FC<{ item: BoardItemType }> = ({ item }) => {
-  const { onClickBoardItem, toggleFlag } = useBoard();
+  const { onClickBoardItem, toggleFlag, expandItemHandle } = useBoard();
   const { show, value } = item;
   const view = useIcon(value);
   if (!show) {
@@ -49,7 +49,8 @@ const Cell: React.FC<{ item: BoardItemType }> = ({ item }) => {
   }
   return (
     <ShowCell
-      onContextMenu={(evt: any) => {
+      onClick={() => expandItemHandle(item)}
+      onContextMenu={(evt) => {
         evt.preventDefault();
         toggleFlag(item);
       }}

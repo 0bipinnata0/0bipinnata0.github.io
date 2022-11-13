@@ -1,6 +1,10 @@
 import React, { useContext, useState } from "react";
 import Container from "../Container";
-import { handleDifferentBoardItem } from "../utils";
+import {
+  expandBoard,
+  getSurroundArr,
+  handleDifferentBoardItem,
+} from "../utils";
 import useBoardArray, { BoardItemType } from "./useBoardArray";
 
 const BoardContext = React.createContext<{
@@ -9,6 +13,7 @@ const BoardContext = React.createContext<{
   bombs: number;
   boardArray: BoardItemType[];
   onClickBoardItem: (item: BoardItemType) => void;
+  expandItemHandle: (item: BoardItemType) => void;
   toggleFlag: (item: BoardItemType) => void;
   setRow: React.Dispatch<React.SetStateAction<number>>;
   setCol: React.Dispatch<React.SetStateAction<number>>;
@@ -33,6 +38,35 @@ export const Board: React.FC<
   const [col, setCol] = useState(defaultCol);
   const [bombs, setBombs] = useState(defaultBombs);
   const [boardArray, updateBoardArray] = useBoardArray(row, col, bombs);
+
+  const expandItemHandle = (selected: BoardItemType) => {
+    const surroundingKeys = getSurroundArr(selected.key, col, row);
+    const surroundingHiddenItem = boardArray
+      .filter((item) => surroundingKeys.includes(item.key))
+      .filter((item) => !item.show);
+
+    const flagIndex = surroundingHiddenItem
+      .filter((item) => item.flag)
+      .map((item) => item.key);
+    if (flagIndex.length === selected.value) {
+      const expandItems = surroundingHiddenItem.filter((item) => !item.flag);
+      console.info("expandItems", expandItems);
+      // 排除周围标记项
+      const endExpand = expandBoard(expandItems, boardArray, col, row).filter(
+        (index) => !flagIndex.includes(index)
+      );
+
+      const endArray = boardArray.map((item) =>
+        !endExpand.includes(item.key)
+          ? item
+          : item.value === -1
+          ? item
+          : { ...item, show: true, flag: false }
+      );
+      updateBoardArray(endArray);
+      return;
+    }
+  };
 
   const onClickBoardItem = (selected: BoardItemType) => {
     if (selected.show) {
@@ -83,6 +117,7 @@ export const Board: React.FC<
         setCol,
         bombs,
         setBombs,
+        expandItemHandle,
       }}
     >
       {header}
