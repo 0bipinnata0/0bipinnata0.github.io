@@ -26,22 +26,24 @@ export class Tetris {
     return true;
   }
   left() {
-    if (this.#x === 0) {
-      return;
+    if (this.#x !== 0) {
+      this.#x--;
     }
-    this.#x--;
+    this.draw(false);
   }
   right() {
     if (this.#x + this.#block.width < this.#width) {
       this.#x++;
     }
+    this.draw(false);
   }
   down() {
     if (this.#y + this.#block.height < this.#height) {
       this.#y++;
+      this.draw(false);
       return false;
     } else {
-      return true;
+      this.draw(true);
     }
   }
   #checkRotate(newBlock: number[][]) {
@@ -55,43 +57,38 @@ export class Tetris {
   rotate() {
     const rotatedBlock = this.#block.getRotated();
     const canRotate = this.#checkRotate(rotatedBlock);
-    if (!canRotate) {
-      return;
+    if (canRotate) {
+      this.#block.rotate();
+      const height = this.#block.height;
+      const width = this.#block.width;
+      if (this.#x + width > this.#width) {
+        this.#x = this.#width - width;
+      }
+      if (this.#y + height > this.#height) {
+        this.#y = this.#height - height;
+      }
     }
-    this.#block.rotate();
-    const height = this.#block.height;
-    const width = this.#block.width;
-    if (this.#x + width > this.#width) {
-      this.#x = this.#width - width;
-    }
-    if (this.#y + height > this.#height) {
-      this.#y = this.#height - height;
-    }
+    this.draw(false);
   }
   constructor(gc: CanvasRenderingContext2D) {
     this.#gc = gc;
     this.draw(false);
     document.onkeydown = (evt) => {
       evt.preventDefault();
-      let newTurn = false;
       switch (evt.key) {
         // case "ArrowUp":
         //   break;
         case "ArrowDown":
-          newTurn = this.down();
-          this.draw(newTurn);
+          this.down();
           break;
         case "ArrowLeft":
           this.left();
-          this.draw(newTurn);
           break;
         case "ArrowRight":
           this.right();
-          this.draw(newTurn);
           break;
         case " ":
           this.rotate();
-          this.draw(newTurn);
           break;
       }
     };
