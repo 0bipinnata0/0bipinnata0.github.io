@@ -62,10 +62,10 @@ export class Tetris {
     const height = this.#block.height;
     const width = this.#block.width;
     if (this.#x + width > this.#width) {
-      this.#x--;
+      this.#x = this.#width - width;
     }
     if (this.#y + height > this.#height) {
-      this.#y--;
+      this.#y = this.#height - height;
     }
   }
   constructor(gc: CanvasRenderingContext2D) {
@@ -130,8 +130,9 @@ export class Tetris {
       const filteredData = this.#data.filter(
         (row) => !row.every((v) => v === 1)
       );
-      if (filteredData.length < this.#height) {
-        this.#data = [new Array(this.#width).fill(0), ...filteredData];
+      const dispearRows = this.#height - filteredData.length;
+      if (dispearRows > 0) {
+        this.#data = [...getMap(dispearRows, this.#width), ...filteredData];
       }
       console.info("END");
       const hasReset = this.#reset();
