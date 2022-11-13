@@ -1,8 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./index.css";
 import { Tetris } from "./other";
 const Rectangle = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
     if (canvasRef.current === null) {
@@ -12,6 +13,7 @@ const Rectangle = () => {
     const context = canvas.getContext("2d");
     if (context) {
       const tetris = new Tetris(context);
+      tetris.addEventListener(setScore);
       const time = setInterval(() => tetris.down(), 1_000);
       return () => {
         clearInterval(time);
@@ -19,7 +21,10 @@ const Rectangle = () => {
     }
   }, []);
   return (
-    <canvas ref={canvasRef} id="myCanvas" height="500" width="250"></canvas>
+    <div>
+      得分{score}
+      <canvas ref={canvasRef} id="myCanvas" height="500" width="250"></canvas>
+    </div>
   );
 };
 

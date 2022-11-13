@@ -6,6 +6,7 @@ export function getRenderColor(val: number) {
 }
 
 export class Tetris {
+  score = 0;
   #width = 10;
   #height = 20;
   #x = 3;
@@ -15,6 +16,14 @@ export class Tetris {
   #data = getMap(this.#height, this.#width);
   #prevData = this.#data;
   #gc: CanvasRenderingContext2D;
+  listeners: Array<(score: number) => void> = [];
+  addEventListener = (listener: (score: number) => void) => {
+    this.listeners.push(listener);
+    const removeListener = () => {
+      this.listeners.splice(this.listeners.indexOf(listener), 1);
+    };
+    return removeListener;
+  };
   #reset() {
     if (this.#init) {
       return false;
@@ -41,9 +50,9 @@ export class Tetris {
     if (this.#y + this.#block.height < this.#height) {
       this.#y++;
       this.draw(false);
-      return false;
     } else {
       this.draw(true);
+      this.listeners.forEach((listener) => listener(this.score));
     }
   }
   #checkRotate(newBlock: number[][]) {
@@ -129,6 +138,7 @@ export class Tetris {
       );
       const dispearRows = this.#height - filteredData.length;
       if (dispearRows > 0) {
+        this.score = this.score + dispearRows;
         this.#data = [...getMap(dispearRows, this.#width), ...filteredData];
       }
       console.info("END");
