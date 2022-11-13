@@ -11,7 +11,11 @@ const Rectangle = () => {
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
     if (context) {
-      new Tetris(context);
+      const tetris = new Tetris(context);
+      const time = setInterval(() => tetris.down(), 1_000);
+      return () => {
+        clearInterval(time);
+      };
     }
   }, []);
   return (
