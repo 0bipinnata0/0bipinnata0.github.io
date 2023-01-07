@@ -1,16 +1,17 @@
-import { Outlet } from "react-router-dom";
-import "./App.css";
-import Header from "./screens/Header";
+import { useRoutes } from "react-router-dom";
+import { IconStyle } from "./assets/iconfont";
+import routes from "./routes";
+import { GlobalStyle } from "./style";
 
-const App: React.FC<{}> = () => {
+function App() {
+  const element = useRoutes(routes);
   return (
-    <div className="application">
-      <Header />
-      <div>
-        <Outlet />
-      </div>
-    </div>
+    <>
+      <GlobalStyle />
+      <IconStyle />
+      {element}
+    </>
   );
-};
+}
 
 export default App;

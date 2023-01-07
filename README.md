@@ -1,46 +1,95 @@
-# Getting Started with Create React App
+# 1.2023/01/06
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1.1 初始化项目结构
 
-## Available Scripts
+### 1.2 css 库(styled-components)
 
-In the project directory, you can run:
+#### 1.2.1 依赖安装 npm i styled-components & npm i -D @types/styled-components
 
-### `yarn start`
+#### 1.2.2 reset-css 使用 https://www.joshwcomeau.com/css/custom-css-reset/ src/style.ts
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### 1.2.3 在 App.ts 导入全局样式并测试效果
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 1.3 路由
 
-### `yarn test`
+#### 1.3.1 安装依赖 npm install react-router react-router-dom
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### 1.3.2 分别创建 Home Recommend Singers Rank 页面作为 Route 测试依赖
 
-### `yarn build`
+- 路径依次为 src/application/Home/index.ts, src/application/Recommend/index.ts, src/application/Singers/index.ts, src/application/Rank/index.ts
+- src/routes/index.tsx 填写 route 配置
+- src/index.tsx 配置外层 context
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 1.4 导航栏的开发
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# 2. 2023/01/07
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 数据流
 
-### `yarn eject`
+1. 安装 npm install @reduxjs/toolkit react-redux 并配置好文件结构
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 组件
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### swiper 组件
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### 轮播组件开发 src\components\slider\index.tsx
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### 推荐列表开发
 
-## Learn More
+### 滚动组件
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 网络请求并且通过 redux 连入数据
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 实现懒加载图片组件，使用方案来自https://blog.renwangyu.com/2022/01/28/react-suspense-lazy-img/
+
+### TODO: 实现视口之外的图片懒加载
+
+## 进场 loading 效果
+
+### 细节改动 防止重复请求 (目前的方案偏差 TODO)
+
+### 横向滚动列表(歌手的分类)
+
+#### 实现横向滚动效果
+
+#### 添加点击样式
+
+### 歌手详情的 list 实现，数据 mock
+
+#### 接口的 api 变化，调整参数结构
+
+#### 使用 redux-toolkit 完成歌手列表页
+
+#### 添加上下 loading 的动画以及 author 的 image 懒加载
+
+#### 基于 axios 实现防抖，方案来自 https://juejin.cn/post/6968630178163458084#heading-10
+
+- FIXME: 在 singer 列表页面，下拉会触发多次更新,可以去 redux-toolkit 看看有没有合适的方案
+
+#### 将歌手类型 地区 首字母纳入 redux 的管理
+
+- TODO: singer 列表页面上拉刷新的 loading 效果延迟消失
+
+## Rank 页面开发
+
+### 1. 准备数据层的文件
+
+### 2. 完成 Rank 数据的渲染
+
+## recommend 详情页面的开发
+
+## 动画相关
+
+- 依赖安装 npm install react-transition-group
+- npm i --save-dev @types/react-transition-group
+
+### 进入歌单详情页的 mock 数据页面
+
+### 添加滚动歌单详情时的走马灯的效果
+
+### 真实数据替换 mock 数据，完成歌单详情页
+
+### 轻量化组件
+
+
+## 复用组件开发 排行榜单详情页面
