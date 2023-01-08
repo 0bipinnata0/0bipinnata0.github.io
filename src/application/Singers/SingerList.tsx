@@ -18,6 +18,7 @@ import { List, ListContainer, ListItem } from "./style";
 import useAppDispatch from "../../hooks/useAppDispatch";
 import useAppSelector from "../../hooks/useAppSelector";
 import { EnterLoading } from "../Rank/style";
+import { useNavigate } from "react-router";
 
 // 渲染函数，返回歌手列表
 const SingerList: React.FC<{
@@ -37,6 +38,11 @@ const SingerList: React.FC<{
   useEffect(() => {
     getHotSingerDispatch();
   }, []);
+
+  const navigate = useNavigate();
+  const enterDetail = (id: string | number) => {
+    navigate(`/singers/${id}`);
+  };
 
   function getHotSingerDispatch() {
     dispatch(getHotSingerList());
@@ -72,9 +78,9 @@ const SingerList: React.FC<{
         }}
       >
         <List>
-          {singerList.map((item, index) => {
+          {singerList.map((item) => {
             return (
-              <ListItem key={item.accountId + "" + index}>
+              <ListItem key={item.id} onClick={() => enterDetail(item.id)}>
                 <div className="img_wrapper">
                   <LazyImage
                     src={item.picUrl + "?param=300x300"}

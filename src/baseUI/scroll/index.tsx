@@ -43,8 +43,13 @@ const PullDownLoading = styled.div<{
   z-index: 100;
 `;
 
+export type ScrollElement = {
+  refresh(): void;
+  getBScroll(): BScroll<Options> | undefined;
+};
+
 const Scroll = forwardRef<
-  { refresh(): void; getBScroll(): BScroll<Options> | undefined },
+  ScrollElement,
   Partial<{
     className: string;
     direction: "vertical" | "horizontal";

@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect } from "react";
+import { Outlet } from "react-router-dom";
 import { alphaTypes, areaTypes, singerTypes } from "../../api/config";
 import Horizon from "../../baseUI/horizon";
 import useAppDispatch from "../../hooks/useAppDispatch";
@@ -64,6 +65,7 @@ const Singers: React.FC<{}> = () => {
         />
       </NavContainer>
       <SingerList singer={singer} area={area} alpha={alpha} />
+      <Outlet />
     </div>
   );
 };

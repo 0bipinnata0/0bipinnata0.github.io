@@ -1,5 +1,19 @@
 import { axiosInstance } from "../config";
 
+export const getHotSingerListRequest = (count: number) => {
+  const limit = 30;
+  return axiosInstance.get<{
+    artists: IHotSinger[];
+    code: number;
+    more: boolean;
+  }>(`/top/artists`, {
+    params: {
+      limit,
+      offset: limit * count,
+    },
+  });
+};
+
 export interface IHotSinger {
   name: string;
   id: number;
@@ -26,11 +40,3 @@ export interface IHotSinger {
   alg?: any;
   fansCount: number;
 }
-
-export const getHotSingerListRequest = (count: number) => {
-  return axiosInstance.get<{
-    artists: IHotSinger[];
-    code: number;
-    more: boolean;
-  }>(`/top/artists?offset=${count}`);
-};

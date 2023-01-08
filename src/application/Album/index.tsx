@@ -49,7 +49,7 @@ const Album = () => {
       in={showStatus}
       timeout={300}
       classNames="fly"
-      appear={true}
+      appear
       unmountOnExit
       onExited={() => navigate(-1)}
     >

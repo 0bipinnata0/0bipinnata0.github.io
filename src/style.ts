@@ -13,6 +13,8 @@ export const GlobalStyle = createGlobalStyle`
 */
 * {
   margin: 0;
+  border: 0;
+  padding: 0;
 }
 /*
   3. Allow percentage-based heights in the application

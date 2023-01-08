@@ -26,7 +26,7 @@ const HeaderContainer = styled.div`
 // 处理函数组件拿不到 ref 的问题，所以用 forwardRef
 const Header = React.forwardRef<
   HTMLDivElement,
-  { handleClick: () => void; children: string; isMarquee?: boolean }
+  { handleClick?: () => void; children: string; isMarquee?: boolean }
 >((props, ref) => {
   const {
     handleClick = () => {},

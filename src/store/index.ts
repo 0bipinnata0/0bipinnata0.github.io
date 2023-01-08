@@ -4,6 +4,7 @@ import bannerListSlice from "./bannerListSlice";
 import categorySlice from "./category/categorySlice";
 import rankListSlice from "./rankList/rankListSlice";
 import recommendListSlice from "./recommendListSlice";
+import singerInfoSlice from "./singerInfo/singerInfoSlice";
 import singerListSlice from "./singerList/singerListSlice";
 
 export const store = configureStore({
@@ -14,6 +15,7 @@ export const store = configureStore({
     category: categorySlice,
     rankList: rankListSlice,
     album: albumDetailSlice,
+    singerInfo: singerInfoSlice,
   },
 });
 
